@@ -1,0 +1,39 @@
+﻿@using Proje.MvcWebUI.Models
+@model IEnumerable<ProductModel>
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="container pb-5 ">
+
+
+
+
+    <div class="row">
+        <div class="col-md-3">
+           @Html.Action("GetCategories","home")
+        </div>
+        <div class="col-md-9">
+            @if (Model.Count() == 0)
+            {
+            <div class="alert alert-dark" role="alert">
+                <i class="fa fa-exclamation-circle" aria-hidden="true"></i>
+                <strong>Bu Kategoride ürün bulunamadı.</strong>
+
+                
+            </div>
+            }
+            else
+            {
+            <div class="alert alert-info" role="alert">
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <strong>@Model.Count() Adet ürün bulundu.</strong> 
+            </div>
+            }
+            @Html.Partial("_ProductList", Model)
+
+
+        </div>
+    </div>
+</div>
+
